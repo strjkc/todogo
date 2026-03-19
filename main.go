@@ -50,12 +50,15 @@ func main() {
 		panic(err)
 	}
 	cliArgs := os.Args
-	if len(cliArgs) < 3 {
+	if len(cliArgs) < 2 {
 		fmt.Println("Not enought arguments provided")
 		return
 	}
 	command := cliArgs[1]
-	commandArgs := cliArgs[2:]
+	commandArgs := []string{}
+	if len(cliArgs) > 2 {
+		commandArgs = cliArgs[2:]
+	}
 	fun, ok := Commands[command]
 	if !ok {
 		fmt.Println("Invalid command")

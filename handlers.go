@@ -73,22 +73,27 @@ func handleUpdate(s *State, args []string) error {
 }
 
 func handleList(s *State, args []string) error {
-	if len(args) != 1 {
-		return errors.New("invalid args for list")
-	}
-	status := Status(args[0])
-	if status == ToDo || status == InProgress || status == Done {
+	if len(args) == 0 {
 		for _, task := range s.Tasks {
-			if task.Status == status {
-				fmt.Printf("ID: %d\nStatus: %s\nDescription: %s\nCreated At: %v\nUpdated At: %v\n",
-					task.ID, task.Status, task.Description, task.CreatedAt, task.UpdatedAt)
-			}
+			fmt.Printf("ID: %d\nStatus: %s\nDescription: %s\nCreated At: %v\nUpdated At: %v\n",
+				task.ID, task.Status, task.Description, task.CreatedAt, task.UpdatedAt)
 		}
 		return nil
 	}
-	fmt.Println("Unknown status")
-
-	return nil
+	if len(args) == 1 {
+		status := Status(args[0])
+		if status == ToDo || status == InProgress || status == Done {
+			for _, task := range s.Tasks {
+				if task.Status == status {
+					fmt.Printf("ID: %d\nStatus: %s\nDescription: %s\nCreated At: %v\nUpdated At: %v\n",
+						task.ID, task.Status, task.Description, task.CreatedAt, task.UpdatedAt)
+				}
+			}
+			return nil
+		}
+		fmt.Println("Unknown status")
+	}
+	return errors.New("invalid args for list")
 }
 
 func handleMvInProg(s *State, args []string) error {
@@ -118,7 +123,7 @@ func handleMvInProg(s *State, args []string) error {
 
 func handleMvDone(s *State, args []string) error {
 	if len(args) != 1 {
-		return errors.New("invalid args for mvInProg")
+		return errors.New("invalid args for mvDone")
 	}
 	if len(s.Tasks) <= 0 {
 		return errors.New("empty tasks list")
