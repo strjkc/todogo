@@ -1,26 +1,15 @@
-###todogo
+# Todogo
 
-Just a small practice cli Todo app.
+Just a small practice cli Todo app. 0 to nil fancyines.
 
-###Usage:
-#####Adding a new task
-add "Buy groceries"
-
-#####Update 
-update 1 "Buy groceries and cook dinner"
-
-#####Deleting tasks
-delete 1
-
-#####Marking a task as in progress or done
-mark-in-progress 1
-mark-done 1
-
-#####Listing all tasks
-list
-
-#####Listing tasks by status
-list done
-list todo
-list in-progress
+### Usage:
+- _add "Buy groceries"_
+- _update 1 "Buy groceries and cook dinner"_
+- _delete 1_
+- _mark-in-progress 1_
+- _mark-done 1_
+- _list_
+- _list done_
+- _list todo_
+- _list in-progress_
 
