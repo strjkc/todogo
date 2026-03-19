@@ -17,9 +17,9 @@ func handleAdd(s *State, args []string) error {
 	s.Tasks = append(s.Tasks, &task)
 	err := saveState(s)
 	if err != nil {
-		s.Counter -= 1
 		return err
 	}
+	fmt.Printf("Task added - ID: %d\n", task.ID)
 	return nil
 }
 
@@ -38,11 +38,13 @@ func handleDelete(s *State, args []string) error {
 	if err != nil {
 		return err
 	}
+	task := s.Tasks[index]
 	s.Tasks = append(s.Tasks[:index], s.Tasks[index+1:]...)
 	err = saveState(s)
 	if err != nil {
 		return err
 	}
+	fmt.Printf("Task Deleted - ID: %d\n", task.ID)
 	return nil
 }
 
@@ -69,6 +71,7 @@ func handleUpdate(s *State, args []string) error {
 	if err != nil {
 		return err
 	}
+	fmt.Printf("Task Updated - ID: %d\n", task.ID)
 	return nil
 }
 
@@ -118,6 +121,7 @@ func handleMvInProg(s *State, args []string) error {
 	if err != nil {
 		return err
 	}
+	fmt.Printf("Task Moved to In Progress - ID: %d\n", task.ID)
 	return nil
 }
 
@@ -143,5 +147,6 @@ func handleMvDone(s *State, args []string) error {
 	if err != nil {
 		return err
 	}
+	fmt.Printf("Task Moved to Done - ID: %d\n", task.ID)
 	return nil
 }
