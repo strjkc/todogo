@@ -47,6 +47,7 @@ func storeTasks(b []byte) error {
 	if err != nil {
 		return err
 	}
+	defer file.Close()
 	bWritten := 0
 	for bWritten != len(b) {
 		i, err := file.Write(b[bWritten:])

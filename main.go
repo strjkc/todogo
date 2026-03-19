@@ -30,10 +30,7 @@ const (
 
 const STORAGEFILE = "storage.json"
 
-var (
-	TasksMap map[Status][]*Task
-	Commands map[string]func(s *State, args []string) error
-)
+var Commands map[string]func(s *State, args []string) error
 
 func initCommands() {
 	Commands = make(map[string]func(s *State, args []string) error)
