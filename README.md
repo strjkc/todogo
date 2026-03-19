@@ -1,7 +1,6 @@
-# Todogo (https://github.com/strjkc/todogo)
+# Todogo
 
-Just a small practice cli Todo app. 0 to nil fancyines.
-
+Just a small practice cli Todo app for https://roadmap.sh/projects/task-tracker. 0 to nil fanciness.
 ### Usage:
 - _add "Buy groceries"_
 - _update 1 "Buy groceries and cook dinner"_
