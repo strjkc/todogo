@@ -58,7 +58,7 @@ func main() {
 		return
 	}
 	command := cliArgs[1]
-	commandArgs := cliArgs[1:]
+	commandArgs := cliArgs[2:]
 	fun, ok := Commands[command]
 	if !ok {
 		fmt.Println("Invalid command")
