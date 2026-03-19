@@ -4,7 +4,7 @@ import "errors"
 
 func search(num int, lst []*Task) (int, error) {
 	i := 0
-	j := len(lst)
+	j := len(lst) - 1
 	for i <= j {
 		mid := (i + j) / 2
 		if lst[mid].ID > num {

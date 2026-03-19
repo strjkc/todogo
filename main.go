@@ -47,16 +47,23 @@ func initCommands() {
 
 func main() {
 	state := &State{}
-	TasksMap = make(map[Status][]*Task)
 	initCommands()
 	err := loadTasks(state)
 	if err != nil && !errors.Is(err, os.ErrNotExist) {
 		panic(err)
 	}
-	cliArgs := os.Args[1:]
-	command := cliArgs[0]
+	cliArgs := os.Args
+	if len(cliArgs) < 3 {
+		fmt.Println("Not enought arguments provided")
+		return
+	}
+	command := cliArgs[1]
 	commandArgs := cliArgs[1:]
-	fun := Commands[command]
+	fun, ok := Commands[command]
+	if !ok {
+		fmt.Println("Invalid command")
+		return
+	}
 	err = fun(state, commandArgs)
 	if err != nil {
 		fmt.Printf("Error: %v", err)
