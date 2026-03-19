@@ -1,4 +1,4 @@
-# Todogo
+# Todogo (https://github.com/strjkc/todogo)
 
 Just a small practice cli Todo app. 0 to nil fancyines.
 
