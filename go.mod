@@ -1,3 +1,3 @@
-module github.com/strjkc/todo
+module github.com/strjkc/todogo
 
 go 1.24.3
